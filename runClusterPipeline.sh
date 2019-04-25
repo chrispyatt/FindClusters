@@ -49,7 +49,10 @@ done
 
 echo "Finding clusters of matching sequences (same contig & within 10,000 nt)"
 
-python findClusters.py "$output"/found_cluster_files "$output"/clusters.txt
+arr=($alignments)
+len=${#arr[@]}
+
+python findClusters.py "$output"/found_cluster_files "$output"/clusters.txt $len
 
 echo "Drawing PNG image of clusters."
 
