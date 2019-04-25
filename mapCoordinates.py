@@ -156,7 +156,7 @@ for contig in matches:
         
         with open(outputFile, "w") as eFn:
             eFn.write(">" + location + "\n")
-            eFn.write(str(seq_record))
+            eFn.write(str(seq_record) + "\n")
         
         # editFASTAnames functionality added here (add strain name to FASTA header of outputFile - missed out by samtools)
         #eFn = open(outputFile, "r")

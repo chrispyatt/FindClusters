@@ -9,6 +9,8 @@ To run the analysis, in the FindClustersPipeline directory, just type:
     bash runClusterPipeline.sh
 
 
+
+
 You can also run each script individually, if you really want to. They can all be run from the command line, should you need their functionality separately.
 
 runHMMERsearch.py - as the name suggests, this takes your alignments and assemblies and creates profile HMMs for each gene, then searches the assemblies using those HMMs. It produces standard nhmmer output files (without the alignment section, for brevity) that you can use for other things, if needed.
@@ -18,3 +20,10 @@ mapCoordinates.py - takes nhmmer output files and retrieves the relevant sequenc
 findClusters.py - simply finds groups of genes/sequences that share a contig. Relies on the output of mapCoordinates.py as it just cycles through the strain directories checking the contig name in each filename. Outputs a tab-delimited file of strains that have at least two genes/sequences on the same contig.
 
 drawClusters.py - reads the output file of findClusters.py and draws cluster diagrams for each strain (all one PNG image).
+
+
+
+
+
+FINAL NOTE
+This pipeline will identify copies of gene clusters in large datasets but is not intended to be a final description of the clusters it finds. Gene boundaries and exact locations should be checked more thoroughly once they have been identified.
