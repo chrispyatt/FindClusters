@@ -15,10 +15,13 @@ parser.add_argument('inputFile',
                     help='Clusters file created by findClusters.py.')
 parser.add_argument('outputFile',
                     help='Desired name of PNG cluster image (saves to current working directory unless full path specified).')
+parser.add_argument('--omitStrains', dest='omitStrains', default="",
+                    help='The names of any strains you want to omit from the final drawing (e.g. strains that have failed subsequent quality control tests).')
 
 args = parser.parse_args()
 inputFile = args.inputFile
 outputFile = args.outputFile
+omitStrains = args.omitStrains
 
 def drawArrow(im, direction, colour, position, label, length):
     draw = ImageDraw.Draw(im)
@@ -146,7 +149,7 @@ def drawMultipleClusters(clusters):
         numClusts = 0
         listGenes = {}
         for line in file:
-            if line.startswith("Strain"):
+            if line.startswith("Strain") or line.split("\t")[0] in omitStrains:
                 continue
             else:
                 numClusts += 1
@@ -166,7 +169,7 @@ def drawMultipleClusters(clusters):
         clustIdx = 1
         file.seek(0)
         for line in file:
-            if line.startswith("Strain"):
+            if line.startswith("Strain") or line.split("\t")[0] in omitStrains:
                 continue
             else:
                 splt = line.split("\t")

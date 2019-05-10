@@ -33,7 +33,7 @@ mapCoordinates.py - takes nhmmer output files and retrieves the relevant sequenc
 
 findClusters.py - simply finds groups of genes/sequences that share a contig. Relies on the output of mapCoordinates.py as it just cycles through the strain directories checking the contig name in each filename. Outputs a tab-delimited file of strains that have at least two genes/sequences on the same contig.
 
-drawClusters.py - reads the output file of findClusters.py and draws cluster diagrams for each strain (all one PNG image).
+drawClusters.py - reads the output file of findClusters.py and draws cluster diagrams for each strain (all one PNG image). You can optionally omit certain strains from the drawing using the --omitStrains option (for example to remove strains that have failed QC checks from a final figure).
 
 
 
