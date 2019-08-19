@@ -4,6 +4,8 @@ This set of scripts allows you to find a specified gene cluster (provided in the
 
 There is a shell script (runClusterPipeline.sh) that runs the whole analysis, running each script in sequence for all your input files. You can run this script from the command line (from the FindCLustersPipeline directory), giving your genome assemblies and target gene alignments as described below. If you want to run the pipeline from anywhere in your system, you will need to assign the various python scripts to environment variables and edit the shell script to reflect this. At the moment it is easiest to just run the pipeline from within its installation directory, as you can specify the full paths to your input and output files anyway.
 
+The output image may be quite large. You may find that you will need to split the image into pieces to fit onto A4 for printing. There are several sites online that can do this. You may also need to reduce the resolution (I've set it quite high) or convert to PDF (can also be done online) to reduce your file sizes.
+
 
 
 Please make sure that the assemblies have simple FASTA headers as the parser is not particularly sophisticated. Special characters (e.g. pipes, asterisks, etc.) will likely result in missing results. The best option is to have a header that starts with a unique alphanumeric identifier. Any other info can be separated by whitespace and will be ignored.

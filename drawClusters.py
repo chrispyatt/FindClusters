@@ -108,7 +108,7 @@ def drawCluster(im, strain, genes, colours, position):
                 genePos += prevLen +100 + 400
                 ImageDraw.Draw(im).polygon([(groupPos+genePos-300, 400*position-40), (groupPos+genePos-100, 400*position-40), (groupPos+genePos-100, 400*position+40), (groupPos+genePos-300, 400*position+40)], fill="red")
                 #ImageDraw.Draw(im).line((groupPos+genePos-30, 100*position-20, groupPos+genePos-30, 100*position+20), fill="red")
-                ImageDraw.Draw(im).text((groupPos+genePos-280, 400*position-20), str(gapList[idx]), fill="black")
+                ImageDraw.Draw(im).text((groupPos+genePos-280, 400*position-20), str(gapList[idx]), font=fnt, fill="black")
                 #ImageDraw.Draw(im).text((groupPos+genePos-40, 100*position-30), str(int(geneSPLT[3])-prevPos), fill="black")
                 #genePos += length + 75
             #elif 0 < (int(geneSPLT[3])-group_start)/100-prevPos < 35:
@@ -185,8 +185,13 @@ def drawMultipleClusters(clusters):
                 drawCluster(im, strain, cluster, listGenes, clustIdx)
                 clustIdx += 1
         outfile = outputFile + ".png"
-        outfile2 = outputFile + ".eps"
+        outfile2 = outputFile + ".pdf"
         im.save(outfile, format = "PNG", quality = 95)
+        
+        pdf = Image.new("RGB", im.size, (255, 255, 255))
+        pdf.paste(im, mask=im.split()[3])
+        
+        pdf.save(outfile2, format = "PDF")
         
         #png = Image.open(outfile)
         #png.load()
